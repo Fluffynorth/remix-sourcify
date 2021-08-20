@@ -1700,36 +1700,37 @@
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.4.0.tgz"
   "version" "2.4.0"
 
-"@remixproject/plugin-api@0.3.3":
-  "integrity" "sha512-Wsic9cnTj/9B7dGKQEq+VTAwit2o7rtdVwJ+lcI68SbavhNHGo0IUexOZkxwGFL2THchWz2hjfrs80W10yle0A=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin-api/-/plugin-api-0.3.3.tgz"
-  "version" "0.3.3"
+"@remixproject/plugin-api@0.3.17":
+  "integrity" "sha512-RHTo4ypiBfSiK963L5Hgjm1QzjhOVfjczAdS124JqZx1IckcCHTXyzxT509j+6ofCw39uAUrh+/AqaHPU2hzMQ=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin-api/-/plugin-api-0.3.17.tgz"
+  "version" "0.3.17"
   dependencies:
-    "@remixproject/plugin-utils" "0.3.3"
+    "@remixproject/plugin-utils" "0.3.17"
 
-"@remixproject/plugin-utils@0.3.3":
-  "integrity" "sha512-w1WCdS7bDmbaY83ybIjHzFW9TlQUV2Rt6Fw8hXGnT29ontD6mKoBWhoEPYzasMEHG47lmNzDjRToVPhQh54Q+w=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin-utils/-/plugin-utils-0.3.3.tgz"
-  "version" "0.3.3"
+"@remixproject/plugin-utils@0.3.17":
+  "integrity" "sha512-h01pjk8RvSRTCIcmoPq8bBXQGyIBlD4LWQ++5B9y3U2olgN+Mq7OZU4CkKS2IhFmj3IvCKn07DgJhMzMYnxGKg=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin-utils/-/plugin-utils-0.3.17.tgz"
+  "version" "0.3.17"
   dependencies:
     "tslib" "2.0.1"
 
-"@remixproject/plugin-webview@^0.3.3":
-  "integrity" "sha512-2/O2hUgcTFFmuKYnHl65FW7n591lF1PLAmFUSzoUOezs0iAg8+IP1ydejVXFLWhZByLkiQezHu/kezA5g4cwaQ=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin-webview/-/plugin-webview-0.3.3.tgz"
-  "version" "0.3.3"
+"@remixproject/plugin-webview@^0.3.17":
+  "integrity" "sha512-6nvf1Q+NTn2N1rgkYGhM+hN1ZcjPWlin0rleUeu/n7+so5KtdJmfSxsROW6+4ORPWAX3Ry6lKCtdlMZ5fIGjFQ=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin-webview/-/plugin-webview-0.3.17.tgz"
+  "version" "0.3.17"
   dependencies:
-    "@remixproject/plugin" "0.3.3"
-    "@remixproject/plugin-api" "0.3.3"
-    "@remixproject/plugin-utils" "0.3.3"
+    "@remixproject/plugin" "0.3.17"
+    "@remixproject/plugin-api" "0.3.17"
+    "@remixproject/plugin-utils" "0.3.17"
+    "axios" "^0.21.1"
 
-"@remixproject/plugin@^0.3.3", "@remixproject/plugin@0.3.3":
-  "integrity" "sha512-gSZdgBjb4y2N2+5kMfbJYjO2zH8b1pFd3xdY4ViL5vtt8l4lup+iOVidrGTv1lPPl7Snk+E8NQhRk8Snr6//mg=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin/-/plugin-0.3.3.tgz"
-  "version" "0.3.3"
+"@remixproject/plugin@^0.3.17", "@remixproject/plugin@0.3.17":
+  "integrity" "sha512-mSg9OiFwAvaKfqV9UL8zLjxxBiypSeiUkW8K4w0TqiEt5MUDNK+mPngEpP43WLfCe4OO9aH4fxNe+A1TyOfRAQ=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin/-/plugin-0.3.17.tgz"
+  "version" "0.3.17"
   dependencies:
-    "@remixproject/plugin-api" "0.3.3"
-    "@remixproject/plugin-utils" "0.3.3"
+    "@remixproject/plugin-api" "0.3.17"
+    "@remixproject/plugin-utils" "0.3.17"
     "events" "3.2.0"
 
 "@restart/context@^2.1.4":
@@ -2857,6 +2858,13 @@
   "version" "0.19.2"
   dependencies:
     "follow-redirects" "1.5.10"
+
+"axios@^0.21.1":
+  "integrity" "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz"
+  "version" "0.21.1"
+  dependencies:
+    "follow-redirects" "^1.10.0"
 
 "axobject-query@^2.0.2":
   "integrity" "sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA=="
@@ -5750,7 +5758,7 @@
     "inherits" "^2.0.3"
     "readable-stream" "^2.3.6"
 
-"follow-redirects@^1.0.0":
+"follow-redirects@^1.0.0", "follow-redirects@^1.10.0":
   "integrity" "sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.0.tgz"
   "version" "1.13.0"
@@ -5880,16 +5888,6 @@
   "integrity" "sha1-FQStJSMVjKpA20onh8sBQRmU6k8="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
-
-"fsevents@^1.2.7":
-  "integrity" "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz"
-  "version" "1.2.13"
-
-"fsevents@~2.1.2", "fsevents@2.1.2":
-  "integrity" "sha512-R4wDiBwZ0KzpgOWetKDug1FZcYhqYnUYKtfZYt4mD5SBz76q0KR4Q9o7GIPamsVPGmW3EYPPJ0dOOjvx32ldZA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.1.2.tgz"
-  "version" "2.1.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -12461,13 +12459,6 @@
   "version" "4.0.3"
   dependencies:
     "loose-envify" "^1.0.0"
-
-"watchpack-chokidar2@^2.0.0":
-  "integrity" "sha512-9TyfOyN/zLUbA288wZ8IsMZ+6cbzvsNyEzSBp6e/zkifi6xxbl8SmQ/CxQq32k8NNqrdVEVUVSEf56L4rQ/ZxA=="
-  "resolved" "https://registry.npmjs.org/watchpack-chokidar2/-/watchpack-chokidar2-2.0.0.tgz"
-  "version" "2.0.0"
-  dependencies:
-    "chokidar" "^2.1.8"
 
 "watchpack@^1.6.0", "watchpack@^1.7.4":
   "integrity" "sha512-aWAgTW4MoSJzZPAicljkO1hsi1oKj/RRq/OJQh2PKI2UKL04c2Bs+MBOB+BBABHTXJpf9mCwHN7ANCvYsvY2sg=="
