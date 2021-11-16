@@ -51,7 +51,7 @@ export class RemixClient extends PluginClient {
     }
 
     switchFile = async (name: string) => {
-        await this.call('fileManager', 'switchFile', name)
+        await this.call('fileManager', 'open', name)
     }
 
     contentImporter = async (stdUrl: string) => {
@@ -157,6 +157,10 @@ export class RemixClient extends PluginClient {
 
                 return resolve(fetchResult);
         });
+    }
+
+    focusFileManager = async () => {
+        this.call("menuicons" as any, "select", "filePanel")
     }
 
     saveFetchedToRemix = async (fetched: FetchResult, address: string) => {

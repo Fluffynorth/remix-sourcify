@@ -72,6 +72,7 @@ export const ContractFetcher: React.FC = () => {
             }
             const fetchResult = await remixClient.fetchByNetwork(state.address, state.chain.id);
             await remixClient.saveFetchedToRemix(fetchResult, state.address);
+            await remixClient.focusFileManager();
             dispatchContext(onFetched(fetchResult));
             dispatch({ type: 'set_loading', payload: false });
             dispatch({ type: 'set_error',  payload: null });
