@@ -204,6 +204,7 @@ export class RemixClient extends PluginClient {
         try {
             const response = await axios.post(SERVER_URL, formData)
             verificationResult.status = response.data.result[0].status;
+            verificationResult.address = response.data.result[0].address; // overwrite as formData can be not checksummed address
             verificationResult.message = 'Successfully verified';
             const repoUrl = verificationResult.status === "perfect" ? REPOSITORY_URL_FULL_MATCH : REPOSITORY_URL_PARTIAL_MATCH;
             verificationResult.url = `${repoUrl}/${formData.get("chain")}/${verificationResult.address}`;
