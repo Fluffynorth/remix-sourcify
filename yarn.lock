@@ -1700,37 +1700,37 @@
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.4.0.tgz"
   "version" "2.4.0"
 
-"@remixproject/plugin-api@0.3.17":
-  "integrity" "sha512-RHTo4ypiBfSiK963L5Hgjm1QzjhOVfjczAdS124JqZx1IckcCHTXyzxT509j+6ofCw39uAUrh+/AqaHPU2hzMQ=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin-api/-/plugin-api-0.3.17.tgz"
-  "version" "0.3.17"
+"@remixproject/plugin-api@0.3.19":
+  "integrity" "sha512-MDCiGYA++5ydncSJUSNe5Fg0qh2fADbMdlCDP8BGsvUfhPEDBRIm8Iw6gYYGu9d5S4xDCs0EBMcExqvdweOGEw=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin-api/-/plugin-api-0.3.19.tgz"
+  "version" "0.3.19"
   dependencies:
-    "@remixproject/plugin-utils" "0.3.17"
+    "@remixproject/plugin-utils" "0.3.19"
 
-"@remixproject/plugin-utils@0.3.17":
-  "integrity" "sha512-h01pjk8RvSRTCIcmoPq8bBXQGyIBlD4LWQ++5B9y3U2olgN+Mq7OZU4CkKS2IhFmj3IvCKn07DgJhMzMYnxGKg=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin-utils/-/plugin-utils-0.3.17.tgz"
-  "version" "0.3.17"
+"@remixproject/plugin-utils@0.3.19":
+  "integrity" "sha512-++L83MmSeV4Hri4uldOB0iNqwOAN/3eAnYorpiSCpKJbeQzT08KyorQ6B3FAiG/EM0pF/o+sPZbNtSJuHCUfIw=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin-utils/-/plugin-utils-0.3.19.tgz"
+  "version" "0.3.19"
   dependencies:
     "tslib" "2.0.1"
 
-"@remixproject/plugin-webview@^0.3.17":
-  "integrity" "sha512-6nvf1Q+NTn2N1rgkYGhM+hN1ZcjPWlin0rleUeu/n7+so5KtdJmfSxsROW6+4ORPWAX3Ry6lKCtdlMZ5fIGjFQ=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin-webview/-/plugin-webview-0.3.17.tgz"
-  "version" "0.3.17"
+"@remixproject/plugin-webview@^0.3.19":
+  "integrity" "sha512-TQiw0Zzm5ZDNmRR7sT9PzF6QmnhBlnTKmJ4X9DpV8ir1en8iG5Uopc5h8RnHc/YFiCVZyQyrjWi2bpSVmAFRuA=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin-webview/-/plugin-webview-0.3.19.tgz"
+  "version" "0.3.19"
   dependencies:
-    "@remixproject/plugin" "0.3.17"
-    "@remixproject/plugin-api" "0.3.17"
-    "@remixproject/plugin-utils" "0.3.17"
+    "@remixproject/plugin" "0.3.19"
+    "@remixproject/plugin-api" "0.3.19"
+    "@remixproject/plugin-utils" "0.3.19"
     "axios" "^0.21.1"
 
-"@remixproject/plugin@^0.3.17", "@remixproject/plugin@0.3.17":
-  "integrity" "sha512-mSg9OiFwAvaKfqV9UL8zLjxxBiypSeiUkW8K4w0TqiEt5MUDNK+mPngEpP43WLfCe4OO9aH4fxNe+A1TyOfRAQ=="
-  "resolved" "https://registry.npmjs.org/@remixproject/plugin/-/plugin-0.3.17.tgz"
-  "version" "0.3.17"
+"@remixproject/plugin@^0.3.19", "@remixproject/plugin@0.3.19":
+  "integrity" "sha512-jEG0ge0ku1TfFU/46ckvzB0Q7WyeUEQhvatv1oMrVTHUj2o8B0u500V92AcI0YNcxXjn5UNNrHGQBgLcNvYG6Q=="
+  "resolved" "https://registry.npmjs.org/@remixproject/plugin/-/plugin-0.3.19.tgz"
+  "version" "0.3.19"
   dependencies:
-    "@remixproject/plugin-api" "0.3.17"
-    "@remixproject/plugin-utils" "0.3.17"
+    "@remixproject/plugin-api" "0.3.19"
+    "@remixproject/plugin-utils" "0.3.19"
     "events" "3.2.0"
 
 "@restart/context@^2.1.4":
@@ -5888,6 +5888,16 @@
   "integrity" "sha1-FQStJSMVjKpA20onh8sBQRmU6k8="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
+
+"fsevents@^1.2.7":
+  "integrity" "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz"
+  "version" "1.2.13"
+
+"fsevents@~2.1.2", "fsevents@2.1.2":
+  "integrity" "sha512-R4wDiBwZ0KzpgOWetKDug1FZcYhqYnUYKtfZYt4mD5SBz76q0KR4Q9o7GIPamsVPGmW3EYPPJ0dOOjvx32ldZA=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.1.2.tgz"
+  "version" "2.1.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -12459,6 +12469,13 @@
   "version" "4.0.3"
   dependencies:
     "loose-envify" "^1.0.0"
+
+"watchpack-chokidar2@^2.0.0":
+  "integrity" "sha512-9TyfOyN/zLUbA288wZ8IsMZ+6cbzvsNyEzSBp6e/zkifi6xxbl8SmQ/CxQq32k8NNqrdVEVUVSEf56L4rQ/ZxA=="
+  "resolved" "https://registry.npmjs.org/watchpack-chokidar2/-/watchpack-chokidar2-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "chokidar" "^2.1.8"
 
 "watchpack@^1.6.0", "watchpack@^1.7.4":
   "integrity" "sha512-aWAgTW4MoSJzZPAicljkO1hsi1oKj/RRq/OJQh2PKI2UKL04c2Bs+MBOB+BBABHTXJpf9mCwHN7ANCvYsvY2sg=="
