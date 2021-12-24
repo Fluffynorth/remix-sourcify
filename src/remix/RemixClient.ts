@@ -110,7 +110,7 @@ export class RemixClient extends PluginClient {
     }
 
     fetchFiles = async (chain: any, address: string) => {
-        const response = await axios.get(`${SERVER_URL}/files/${chain}/${address}`)
+        const response = await axios.get(`${SERVER_URL}/files/any/${chain}/${address}`)
         return response;
     }
 
@@ -139,11 +139,13 @@ export class RemixClient extends PluginClient {
                 }
 
                 const fetchResult: FetchResult = {
+                    verificationStatus: '',
                     metadata: null,
                     sources: []
                 };
 
-                for (const file of response.data) {
+                fetchResult.verificationStatus = response.data.status
+                for (const file of response.data.files) {
                     if (file.name === "metadata.json") {
                         if (fetchResult.metadata) {
                             return reject({ info: "Multiple metadata files fetched" });

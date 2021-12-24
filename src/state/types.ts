@@ -5,6 +5,7 @@ export type Source = {
 }
 
 export type FetchResult = {
+    verificationStatus: string,
     metadata: any,
     sources: Source[]
 }
