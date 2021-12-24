@@ -108,6 +108,12 @@ export const ContractFetcher: React.FC = () => {
                                    </Alert>
                 }
                 {
+                    (!state.error && stateContext?.fetchResult?.verificationStatus === 'partial') && (
+                        <Alert type={'warning'} heading='This is a partially matched contract!'>
+                        </Alert>
+                    )
+                }
+                {
                     !state.error && stateContext.fetchResult && (
                         <Alert type={'success'} heading='Contract successfully fetched!'>
                         </Alert>
