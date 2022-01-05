@@ -158,7 +158,9 @@ export const VerifyContract: React.FC = () => {
                 Upload, verify & publish contract metadata and sources.
             </p>
             <p className="card-text my-2">
-                Note: the metadata must be exactly the same as at deployment time
+                Note: <br/>
+                1. Compile contracts in Remix, before attempting verification <br/>
+                2. The metadata must be exactly the same as at deployment time
             </p>
             <p className="card-text my-2">
                 Browse repository <a href={`${REPOSITORY_URL}`} target="_blank" rel="noopener noreferrer" >here</a> or via <a href={IPFS_GATEWAY} target="_blank" rel="noopener noreferrer" >ipfs/ipns gateway.</a>
