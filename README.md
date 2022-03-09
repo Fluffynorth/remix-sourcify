@@ -9,6 +9,7 @@ This is UI part of the [source-verify](https://github.com/ethereum/source-verify
 To publish plugin to ipfs run the command
 
 ```bash
+yarn build
 yarn ipfs
 ```
 Update sourcify profile, in the remix directory with the generated plugin URL
