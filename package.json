@@ -7,7 +7,8 @@
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "npm install && rimraf dist/ && webpack --config webpack.prod.js",
     "serve": "serve -l 3000 dist/ --no-clipboard ",
-    "start": "npm run build && npm run serve"
+    "start": "npm run build && npm run serve",
+    "ipfs": "node bin/upload-remix-plugin ./dist"
   },
   "keywords": [
     "source",
@@ -45,8 +46,14 @@
     "css-loader": "^3.2.0",
     "dotenv-webpack": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "inquirer": "^8.2.1",
+    "ipfs-http-client": "^35.1.0",
+    "is-base64": "^1.1.0",
+    "is-url": "^1.2.4",
     "rimraf": "2.6.3",
+    "semver": "^7.3.5",
     "serve": "^11.3.2",
+    "signale": "^1.4.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
     "ts-loader": "^6.0.4",
