@@ -163,13 +163,13 @@ export const VerifyContract: React.FC = () => {
                 2. The metadata must be exactly the same as at deployment time
             </p>
             <p className="card-text my-2">
-                Browse repository <a href={`${REPOSITORY_URL}`} target="_blank" rel="noopener noreferrer" >here</a> or via <a href={IPFS_GATEWAY} target="_blank" rel="noopener noreferrer" >ipfs/ipns gateway.</a>
+                Search repository for verified contract <a href={`${REPOSITORY_URL}`} target="_blank" rel="noopener noreferrer" >here.</a>
             </p>
             <form className="d-flex flex-column" onSubmit={onSubmit}>
                 <Dropdown 
                     chainOptions={chainOptions}
                     chain={state.chain}
-                     setChain={(chain: any) => dispatch({ type: 'set_chain', payload: chain })} />
+                    setChain={(chain: any) => dispatch({ type: 'set_chain', payload: chain })} />
                 <AddressInput 
                     setAddress={(address: string) => dispatch({ type: 'set_address', payload: address })} />
                 <button 
@@ -200,7 +200,7 @@ export const VerifyContract: React.FC = () => {
             }
             {
                 state.error && <Alert type={'danger'} heading={state.error}>
-                               </Alert>
+                    </Alert>
             }
             {
                 stateContext.verificationResult && !state.error && (
@@ -212,6 +212,9 @@ export const VerifyContract: React.FC = () => {
                     </Alert>
                 )
             }
+            <p className="my-1"><a
+                href="https://docs.sourcify.dev/" target="_blank" rel="noopener noreferrer" >Documentation</a>
+            </p>
             <p className="my-1">Questions: <a
                 href="https://gitter.im/ethereum/source-verify" target="_blank" rel="noopener noreferrer" >Gitter</a>
             </p>
