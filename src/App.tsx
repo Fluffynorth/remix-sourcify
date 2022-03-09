@@ -10,36 +10,36 @@ import './App.css';
 
 const App: React.FC = () => {
 
-    useEffect(() => {
-        const load = async () => {
-            try {
-                await remixClient.createClient();
-            } catch(err) {
-                console.log(err)
-            }
-        }
-        load()
-    }, [])
+  useEffect(() => {
+    const load = async () => {
+      try {
+        await remixClient.createClient();
+      } catch(err) {
+        console.log(err)
+      }
+    }
+    load()
+  }, [])
 
   return (
-      <div id="wrapper">
-        <Container>
-            <main role="main">
-                <Accordion>
-                    <AccordionElement
-                        headerText="Contract Fetcher"
-                        eventKey="0"> 
-                        <ContractFetcher/>
-                    </AccordionElement>
-                    <AccordionElement
-                        headerText="Verifier"
-                        eventKey="1"> 
-                        <VerifyContract/>
-                    </AccordionElement>
-                </Accordion>
-            </main>    
-        </Container>
-      </div>
+    <div id="wrapper">
+      <Container>
+        <main role="main">
+          <Accordion>
+            <AccordionElement
+              headerText="Contract Lookup"
+              eventKey="0"> 
+              <ContractFetcher/>
+            </AccordionElement>
+            <AccordionElement
+              headerText="Verifier"
+              eventKey="1"> 
+              <VerifyContract/>
+            </AccordionElement>
+          </Accordion>
+        </main>    
+      </Container>
+    </div>
   )
 }
 
