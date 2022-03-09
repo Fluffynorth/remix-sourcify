@@ -5,6 +5,13 @@ This is UI part of the [source-verify](https://github.com/ethereum/source-verify
 ## Demo
 [Source verify demo](https://streamable.com/q82v8x)
 
+## Publish to Ipfs
+To publish plugin to ipfs run the command
+
+```bash
+yarn ipfs
+```
+Update sourcify profile, in the remix directory with the generated plugin URL
 
 # How to test in Remix
 
