@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 import { Dropdown } from "../common/form/Dropdown"
 import { AddressInput } from "../common/form/AddressInput"
 import { chainOptions } from "../../common/Constants"
@@ -7,6 +7,7 @@ import { useDispatchContext, useStateContext } from '../../state/Store'
 import { onFetched } from '../../state/actions';
 import {Alert, Spinner} from "../common";
 import { isAddress } from 'web3-utils';
+import { Context } from '../../state/chain';
 
 export type IFetchState = {
     isLoading: boolean,
@@ -18,6 +19,15 @@ export type IFetchState = {
 export type IFetchActions = {
     type: 'set_loading' | 'set_error' | 'set_address' | 'set_chain';
     payload?: any
+}
+
+const generateChains = async () => {
+    const chainList = await remixClient.fetchChains()
+    const restructuredList = chainList.data.map((chain) => {
+        return { value: chain.name, label: chain.name, id: chain.id }
+    })
+
+    return restructuredList
 }
 
 export const reducer = (state: IFetchState, action: IFetchActions ) => {
@@ -49,7 +59,13 @@ export const reducer = (state: IFetchState, action: IFetchActions ) => {
 }
 
 export const ContractFetcher: React.FC = () => {
-
+    const { sourcifyChains } = useContext(Context)
+    const parsedChains = sourcifyChains.map((chain) => {
+        return {
+            label: chain.name,
+            value: chain.chainId,
+        }
+    })
     const initialState: IFetchState = {
         isLoading: false, 
         chain: chainOptions[0],
@@ -61,7 +77,8 @@ export const ContractFetcher: React.FC = () => {
     const dispatchContext = useDispatchContext();
 
     const [state, dispatch] = useReducer(reducer, initialState)
-
+    console.log(state.chain)
+    console.log(chainOptions[0])
     const onSubmit = async (e: any) => {
         e.preventDefault();
         dispatch({ type: 'set_loading', payload: true });
@@ -87,7 +104,7 @@ export const ContractFetcher: React.FC = () => {
                 <p className="card-text my-2 mb-3">Input a verified contract's address to load its source code in the editor.</p>
                     <form className="d-flex flex-column" onSubmit={onSubmit}>
                         <Dropdown 
-                            chainOptions={chainOptions} 
+                            chainOptions={parsedChains} 
                             chain={state.chain} 
                             setChain={(chain: any) => dispatch({ type: 'set_chain', payload: chain })} />
 
