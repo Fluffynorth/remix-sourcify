@@ -77,8 +77,6 @@ export const ContractFetcher: React.FC = () => {
     const dispatchContext = useDispatchContext();
 
     const [state, dispatch] = useReducer(reducer, initialState)
-    console.log(state.chain)
-    console.log(chainOptions[0])
     const onSubmit = async (e: any) => {
         e.preventDefault();
         dispatch({ type: 'set_loading', payload: true });
