@@ -1,12 +1,14 @@
-import React, { useReducer, useEffect} from "react";
+import React, { useReducer, useEffect, useContext, useMemo} from "react";
 import { Alert, Spinner } from "../common";
-import { REPOSITORY_URL, chainOptions, IPFS_GATEWAY, REPOSITORY_URL_FULL_MATCH } from '../../common/Constants';
+import { REPOSITORY_URL, chainOptions } from '../../common/Constants';
 import { useStateContext, useDispatchContext } from "../../state/Store";
 import { remixClient } from "../../remix/RemixClient";
 import { AddressInput } from "../common/form/AddressInput"
 import { Dropdown } from "../common/form/Dropdown"
 import { VerificationResult } from "../../state/types";
+import { Context } from '../../state/chain';
 import web3utils from "web3-utils";
+import { Chain } from '../../state/types';
 
 export type IVerifyState = {
     isLoading: boolean,
@@ -66,7 +68,16 @@ export const reducer = (state: IVerifyState, action: IVerifyActions) => {
         }
 }
 
-export const VerifyContract: React.FC = () => {
+export const ChainListDropDown = () => {
+    const { sourcifyChains } = useContext(Context)
+    return <VerifyContract chains={sourcifyChains} />
+}
+
+type Props = {
+    chains: Chain[]
+}
+
+const VerifyContract = React.memo(({ chains }: Props) => {
 
     const initialState: IVerifyState = {
         isLoading: false,
@@ -77,6 +88,14 @@ export const VerifyContract: React.FC = () => {
         contractName: "",
         isListening: false
     }
+
+    const parsedChains = useMemo(() => chains.map((chain) => {
+        return {
+            label: chain.name,
+            value: chain.chainId,
+            id: chain.chainId
+        }
+    }), [chains])
 
     const stateContext = useStateContext();
     const dispatchContext = useDispatchContext();
@@ -167,7 +186,7 @@ export const VerifyContract: React.FC = () => {
             </p>
             <form className="d-flex flex-column" onSubmit={onSubmit}>
                 <Dropdown 
-                    chainOptions={chainOptions}
+                    chainOptions={parsedChains}
                     chain={state.chain}
                     setChain={(chain: any) => dispatch({ type: 'set_chain', payload: chain })} />
                 <AddressInput 
@@ -224,4 +243,4 @@ export const VerifyContract: React.FC = () => {
             <p className="m-0">Feel free to contribute.</p>
         </div>
     )
-};
+});
