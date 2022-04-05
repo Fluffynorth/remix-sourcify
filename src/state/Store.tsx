@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { IActions, reducer } from './reducer';
 import { FetchResult, VerificationResult } from './types';
+import { ContextProvider } from './chain';
 
 export interface IState {
     isLoaded: boolean,
@@ -24,7 +25,9 @@ export const StateProvider = ({children}) => {
     return (
         <DispatchContext.Provider value={dispatch}>
             <StateContext.Provider value={state}>
-                {children}
+                <ContextProvider>
+                    {children}
+                </ContextProvider>
             </StateContext.Provider>
         </DispatchContext.Provider>
     );

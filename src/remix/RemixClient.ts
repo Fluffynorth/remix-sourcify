@@ -114,6 +114,11 @@ export class RemixClient extends PluginClient {
         return response;
     }
 
+    fetchChains = async () => {
+        const response = await axios.get(`${SERVER_URL}/chains`)
+        return response
+    }
+
     fetch = async(address: string): Promise<FetchResult> => {
         return new Promise(async (resolve, reject) => {   
 

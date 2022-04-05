@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext, useMemo } from 'react';
 import { Dropdown } from "../common/form/Dropdown"
 import { AddressInput } from "../common/form/AddressInput"
 import { chainOptions } from "../../common/Constants"
@@ -7,6 +7,8 @@ import { useDispatchContext, useStateContext } from '../../state/Store'
 import { onFetched } from '../../state/actions';
 import {Alert, Spinner} from "../common";
 import { isAddress } from 'web3-utils';
+import { Context } from '../../state/chain';
+import { Chain } from '../../state/types';
 
 export type IFetchState = {
     isLoading: boolean,
@@ -48,8 +50,16 @@ export const reducer = (state: IFetchState, action: IFetchActions ) => {
     }
 }
 
-export const ContractFetcher: React.FC = () => {
+export const ChainListDropDown = () => {
+    const { sourcifyChains } = useContext(Context)
+    return <ContractFetcher chains={sourcifyChains} />
+}
 
+type Props = {
+    chains: Chain[]
+}
+
+const ContractFetcher = React.memo(({ chains }: Props) => {
     const initialState: IFetchState = {
         isLoading: false, 
         chain: chainOptions[0],
@@ -57,11 +67,18 @@ export const ContractFetcher: React.FC = () => {
         error: null
     }
 
+    const parsedChains = useMemo(() => chains.map((chain) => {
+        return {
+            label: chain.name,
+            value: chain.chainId,
+            id: chain.chainId
+        }
+    }), [chains])
+
     const stateContext = useStateContext();
     const dispatchContext = useDispatchContext();
 
     const [state, dispatch] = useReducer(reducer, initialState)
-
     const onSubmit = async (e: any) => {
         e.preventDefault();
         dispatch({ type: 'set_loading', payload: true });
@@ -87,7 +104,7 @@ export const ContractFetcher: React.FC = () => {
                 <p className="card-text my-2 mb-3">Input a verified contract's address to load its source code in the editor.</p>
                     <form className="d-flex flex-column" onSubmit={onSubmit}>
                         <Dropdown 
-                            chainOptions={chainOptions} 
+                            chainOptions={parsedChains} 
                             chain={state.chain} 
                             setChain={(chain: any) => dispatch({ type: 'set_chain', payload: chain })} />
 
@@ -105,7 +122,7 @@ export const ContractFetcher: React.FC = () => {
                 }
                 {
                     state.error && <Alert type={'danger'} heading={state.error}>
-                                   </Alert>
+                        </Alert>
                 }
                 {
                     (!state.error && stateContext?.fetchResult?.verificationStatus === 'partial') && (
@@ -121,4 +138,4 @@ export const ContractFetcher: React.FC = () => {
                 }
         </div>
     )
-}
+})
