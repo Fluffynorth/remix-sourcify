@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer, useContext, useMemo } from 'react';
 import { Dropdown } from "../common/form/Dropdown"
 import { AddressInput } from "../common/form/AddressInput"
 import { chainOptions } from "../../common/Constants"
@@ -8,6 +8,7 @@ import { onFetched } from '../../state/actions';
 import {Alert, Spinner} from "../common";
 import { isAddress } from 'web3-utils';
 import { Context } from '../../state/chain';
+import { Chain } from '../../state/types';
 
 export type IFetchState = {
     isLoading: boolean,
@@ -19,15 +20,6 @@ export type IFetchState = {
 export type IFetchActions = {
     type: 'set_loading' | 'set_error' | 'set_address' | 'set_chain';
     payload?: any
-}
-
-const generateChains = async () => {
-    const chainList = await remixClient.fetchChains()
-    const restructuredList = chainList.data.map((chain) => {
-        return { value: chain.name, label: chain.name, id: chain.id }
-    })
-
-    return restructuredList
 }
 
 export const reducer = (state: IFetchState, action: IFetchActions ) => {
@@ -58,20 +50,30 @@ export const reducer = (state: IFetchState, action: IFetchActions ) => {
     }
 }
 
-export const ContractFetcher: React.FC = () => {
+export const ChainListDropDown = () => {
     const { sourcifyChains } = useContext(Context)
-    const parsedChains = sourcifyChains.map((chain) => {
-        return {
-            label: chain.name,
-            value: chain.chainId,
-        }
-    })
+    return <ContractFetcher chains={sourcifyChains} />
+}
+
+type Props = {
+    chains: Chain[]
+}
+
+const ContractFetcher = React.memo(({ chains }: Props) => {
     const initialState: IFetchState = {
         isLoading: false, 
         chain: chainOptions[0],
         address: '',
         error: null
     }
+
+    const parsedChains = useMemo(() => chains.map((chain) => {
+        return {
+            label: chain.name,
+            value: chain.chainId,
+            id: chain.chainId
+        }
+    }), [chains])
 
     const stateContext = useStateContext();
     const dispatchContext = useDispatchContext();
@@ -120,7 +122,7 @@ export const ContractFetcher: React.FC = () => {
                 }
                 {
                     state.error && <Alert type={'danger'} heading={state.error}>
-                                   </Alert>
+                        </Alert>
                 }
                 {
                     (!state.error && stateContext?.fetchResult?.verificationStatus === 'partial') && (
@@ -136,4 +138,4 @@ export const ContractFetcher: React.FC = () => {
                 }
         </div>
     )
-}
+})

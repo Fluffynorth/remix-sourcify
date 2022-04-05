@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { VerifyContract } from "./components/verify-contract/VerifyContract";
-import { ContractFetcher } from "./components/contract-fetcher/ContractFetcher";
+import { ChainListDropDown as ContractFetcher } from "./components/contract-fetcher/ContractFetcher";
 // import { Configuration } from './components/configuration/Configuration';
 import { remixClient } from './remix/RemixClient';
 import { Accordion, AccordionElement } from './components/common';
