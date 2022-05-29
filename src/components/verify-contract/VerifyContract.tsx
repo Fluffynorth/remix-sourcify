@@ -208,7 +208,7 @@ const VerifyContract = React.memo(({ chains }: Props) => {
                     state.files.length > 0 &&
                     <>
                         <label className="text-muted mt-2">FILES</label>
-                        <ul className="border p-2 d-flex flex-column text-muted align-items-center">
+                        <ul className="verifier-file-list border p-2 d-flex flex-column text-muted">
                             {state.files.map(file => <li key={file.name}>{file.name}</li>)}
                         </ul>
                     </>

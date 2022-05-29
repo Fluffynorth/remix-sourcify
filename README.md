@@ -5,6 +5,18 @@ This is UI part of the [source-verify](https://github.com/ethereum/source-verify
 ## Demo
 [Source verify demo](https://streamable.com/q82v8x)
 
+## Run locally
+
+Install and run with npm:
+```
+npm install
+npm start
+```
+
+You will see the host and port the plugin is running (default: `http://localhost:3000`).
+
+Open https://remix.ethereum.org, click "Plugin Manager" on bottom left and click "Connect to Local Plugin" below the search bar. Enter a plugin name and the URL (e.g. `http://localhost:3000`) to add the local plugin to Remix.
+
 ## Publish to Ipfs
 To publish plugin to ipfs run the command
 

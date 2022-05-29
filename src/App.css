@@ -46,3 +46,8 @@ button[disabled] {
   color: inherit !important;
   background: inherit !important;
 }
+
+.verifier-file-list {
+  list-style-position: inside;
+  word-break: break-all;
+}
