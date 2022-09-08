@@ -91,7 +91,7 @@ const VerifyContract = React.memo(({ chains }: Props) => {
 
     const parsedChains = useMemo(() => chains.map((chain) => {
         return {
-            label: chain.name,
+            label: chain.title || chain.name,
             value: chain.chainId,
             id: chain.chainId
         }
