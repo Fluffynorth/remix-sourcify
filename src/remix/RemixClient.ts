@@ -76,21 +76,23 @@ export class RemixClient extends PluginClient {
         if (!result.source) {
             throw new Error("Could not get compilation results.");
         }
-
         const target = result.source.target;
         const contract = result.data.contracts[target];
-        const contractName = Object.keys(contract)[0];
-        const metadata = new File([contract[contractName].metadata], "metadata.json", { type: "text/plain" });
+        const defaultContractName = Object.keys(contract)[0];
 
-        const files = [metadata];
-        
+        let metadatas = {}
+        for (const contractName in contract) {
+            metadatas[contractName] = contract[contractName].metadata
+        }
+
+        const files = [];
         for (const sourcePath in result.source.sources) {
             const content = result.source.sources[sourcePath].content;
             const source = new File([content], sourcePath, { type: "text/plain" });
             files.push(source);
         }
 
-        return { files, contractName };
+        return { files, metadatas, defaultContractName };
     }
 
     detectNetwork = async () => {

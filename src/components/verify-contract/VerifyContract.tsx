@@ -9,6 +9,7 @@ import { VerificationResult } from "../../state/types";
 import { Context } from '../../state/chain';
 import web3utils from "web3-utils";
 import { Chain } from '../../state/types';
+import Select from "react-select";
 
 export type IVerifyState = {
     isLoading: boolean,
@@ -18,10 +19,11 @@ export type IVerifyState = {
     files: [],
     contractName: string
     isListening: boolean
+    metadatas: string[]
 }
 
 export type IVerifyActions = {
-    type: 'set_loading' | 'set_error' | 'set_address' | 'set_chain' | 'set_files' | 'set_listening' | 'set_contract_name';
+    type: 'set_loading' | 'set_error' | 'set_address' | 'set_chain' | 'set_files' | 'set_listening' | 'set_contract_name' | 'set_metadatas';
     payload?: any
 }
 
@@ -63,6 +65,11 @@ export const reducer = (state: IVerifyState, action: IVerifyActions) => {
                 ...state,
                 contractName: action.payload
             }
+        case 'set_metadatas':
+            return {
+                ...state,
+                metadatas: action.payload
+            }
         default:
             return state;
         }
@@ -86,7 +93,8 @@ const VerifyContract = React.memo(({ chains }: Props) => {
         error: null,
         files: [],
         contractName: "",
-        isListening: false
+        isListening: false,
+        metadatas: [],
     }
 
     const parsedChains = useMemo(() => chains.map((chain) => {
@@ -102,6 +110,14 @@ const VerifyContract = React.memo(({ chains }: Props) => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    const metadatas = state.metadatas
+    const parsedContractNames = useMemo(() => Object.keys(metadatas).map((contractName) => {
+        return {
+            label: contractName,
+            value: contractName
+        }
+    }), [metadatas])
+
     // if (!state.isListening) {
     //     remixClient.listenOnCompilationFinishedEvent((data: any) => {
     //         dispatch({ type: 'set_files', payload: [data.target.replace("browser/", ""), "metadata.json"] });
@@ -116,8 +132,9 @@ const VerifyContract = React.memo(({ chains }: Props) => {
     useEffect(() => {
         if (!state.isListening) {
             remixClient.listenOnCompilationFinishedEvent(async () => {
-                const { contractName, files } = await remixClient.fetchLastCompilation();
-                dispatch({ type: "set_contract_name", payload: contractName });
+                const { metadatas, files, defaultContractName } = await remixClient.fetchLastCompilation();
+                dispatch({ type: "set_contract_name", payload: defaultContractName });
+                dispatch({ type: "set_metadatas", payload: metadatas });
                 dispatch({ type: "set_files", payload: files });
                 dispatch({ type: "set_error", payload: null });
             });
@@ -150,6 +167,9 @@ const VerifyContract = React.memo(({ chains }: Props) => {
             dispatch({ type: 'set_loading', payload: false });
             return;
         }
+
+        const metadata = state.metadatas[state.contractName]
+        formData.append('files', new File([metadata], "metadata.json", { type: "text/plain" }));
 
         const response: VerificationResult = await remixClient.verifyByForm(formData);
         if (response.status === 'no match') {
@@ -191,6 +211,12 @@ const VerifyContract = React.memo(({ chains }: Props) => {
                     setChain={(chain: any) => dispatch({ type: 'set_chain', payload: chain })} />
                 <AddressInput 
                     setAddress={(address: string) => dispatch({ type: 'set_address', payload: address })} />
+                <Select
+                    options={parsedContractNames}
+                    classNamePrefix="dropdown"
+                    placeholder="Contract name (required)"
+                    value={parsedContractNames.find(c => c===state.contractName)}
+                    onChange={(contract: any) => dispatch({ type: 'set_contract_name', payload: contract.value })} />
                 <button 
                     type="submit" 
                     className="btn btn-primary my-2" 
@@ -209,6 +235,7 @@ const VerifyContract = React.memo(({ chains }: Props) => {
                     <>
                         <label className="text-muted mt-2">FILES</label>
                         <ul className="verifier-file-list border p-2 d-flex flex-column text-muted">
+                            <li>metadata.json</li>
                             {state.files.map(file => <li key={file.name}>{file.name}</li>)}
                         </ul>
                     </>
