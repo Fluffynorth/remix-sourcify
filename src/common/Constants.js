@@ -37,4 +37,5 @@ export const chainOptions = [
     {value: "meter testnet", label: "Meter Testnet", id: 83},
     {value: "aurora mainnet", label: "Aurora Mainnet", id: 1313161554 },
     {value: "aurora testnet", label: "Aurora Testnet", id: 1313161555 },
+    {value: "phoenix", label: "Phoenix", id: 13381 },
 ];
